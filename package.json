@@ -1,0 +1,10 @@
+{
+  "name": "tv-kiosk-tizenbrew",
+  "version": "1.0.0",
+  "description": "TizenBrew module: shows one web page fullscreen on the office TV and keeps it alive.",
+  "packageType": "mods",
+  "appName": "Kantoor-TV",
+  "websiteURL": "https://sites.tech42.nl/pixelkantoor/",
+  "main": "kiosk.js",
+  "keys": []
+}

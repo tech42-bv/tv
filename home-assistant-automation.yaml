@@ -1,0 +1,18 @@
+# Paste into Home Assistant: Settings > Automations > Create automation > Edit in YAML.
+# Replace media_player.kantoor_tv with the entity of the Samsung TV integration.
+alias: Kantoor-TV start kiosk
+triggers:
+  - trigger: state
+    entity_id: media_player.kantoor_tv
+    to: "on"
+actions:
+  # Give the TV time to finish booting; launching too early is ignored.
+  - delay: "00:00:20"
+  - action: media_player.play_media
+    target:
+      entity_id: media_player.kantoor_tv
+    data:
+      media_content_type: app
+      # App ID of TizenBrew (from its config.xml); TizenBrew then autolaunches the kiosk module.
+      media_content_id: xvvl3S1bvH.TizenBrewStandalone
+mode: single
