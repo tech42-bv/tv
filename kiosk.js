@@ -1,46 +1,7 @@
-/* TizenBrew evaluates this before the page's own scripts on every document
-   (evaluateScriptOnDocumentStart). Written as ES5: the 2019 Tizen 5.0 engine is Chromium 63.
-   The page must ship syntax for that engine itself; this file only adds missing runtime APIs. */
+/* TizenBrew injects this into every execution context of the page after it loads.
+   Written as ES5: the 2019 Tizen 5.0 engine is Chromium 63. Polyfills the page needs live in the
+   page itself (pixelkantoor), because this script arrives after the page's own scripts. */
 (function () {
-  // Polyfills: APIs the pixelkantoor bundle calls that Chromium 63 lacks.
-  if (typeof globalThis === "undefined") window.globalThis = window; // Chrome 71; WebHare sets globalThis.$wh at startup
-
-  if (!Object.fromEntries) {
-    Object.fromEntries = function (entries) {
-      var result = {};
-      Array.from(entries).forEach(function (pair) { result[pair[0]] = pair[1]; });
-      return result;
-    };
-  }
-
-  if (!String.prototype.replaceAll) {
-    String.prototype.replaceAll = function (pattern, replacement) {
-      if (pattern instanceof RegExp) return this.replace(pattern, replacement); // spec requires the g flag already
-      var escaped = String(pattern).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return this.replace(new RegExp(escaped, "g"), replacement);
-    };
-  }
-
-  if (!Array.prototype.at) {
-    Object.defineProperty(Array.prototype, "at", {
-      configurable: true,
-      writable: true,
-      value: function (index) {
-        index = Math.trunc(index) || 0;
-        return this[index < 0 ? this.length + index : index];
-      }
-    });
-  }
-
-  if (typeof ResizeObserver === "undefined") {
-    // shortcut: only reacts to window resizes, enough for a fullscreen TV that never resizes an element on its own.
-    window.ResizeObserver = function (callback) {
-      var handler = function () { callback([]); };
-      this.observe = function () { window.addEventListener("resize", handler); };
-      this.unobserve = this.disconnect = function () { window.removeEventListener("resize", handler); };
-    };
-  }
-
   // Kiosk behavior: only the top window manages reloads.
   if (window.top !== window || window.__tvKiosk) return;
   window.__tvKiosk = true;

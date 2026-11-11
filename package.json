@@ -4,7 +4,7 @@
   "description": "TizenBrew module: shows one web page fullscreen on the office TV and keeps it alive.",
   "packageType": "mods",
   "appName": "Kantoor-TV",
-  "websiteURL": "https://tech42-bv.github.io/tv/hello.html",
+  "websiteURL": "https://sites.tech42.nl/pixelkantoor/",
   "main": "kiosk.js",
   "keys": []
 }
