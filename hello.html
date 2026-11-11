@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <style>
+    body { margin: 0; background: #0b3d2e; color: #fff; font: 48px sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+    small { display: block; font-size: 20px; opacity: .8; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div>
+    Hello world
+    <small id="clock">JavaScript draait niet</small>
+    <small id="ua"></small>
+  </div>
+  <script>
+    // ES5 on purpose: proves the TV's own engine runs this, without any build step.
+    document.getElementById("ua").textContent = navigator.userAgent;
+    setInterval(function () {
+      document.getElementById("clock").textContent = "JavaScript draait: " + new Date().toLocaleTimeString();
+    }, 1000);
+  </script>
+</body>
+</html>
