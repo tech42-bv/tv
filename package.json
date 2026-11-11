@@ -6,5 +6,6 @@
   "appName": "Kantoor-TV",
   "websiteURL": "https://sites.tech42.nl/pixelkantoor/",
   "main": "kiosk.js",
+  "evaluateScriptOnDocumentStart": true,
   "keys": []
 }
