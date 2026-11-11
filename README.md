@@ -23,3 +23,8 @@ Waarom TizenBrew en geen eigen .wgt: TizenBrew installeer je één keer; de modu
 - De repo moet publiek zijn (jsDelivr), dus de URL is openbaar.
 - Een firmware-update of Developer mode uit kan TizenBrew verwijderen: dan stap 2 opnieuw.
 - Pagina moet werken op een oude Chromium: geen moderne JS/CSS zonder transpileren.
+
+## TizenBrew-valkuilen
+
+- `evaluateScriptOnDocumentStart: true` is nodig voor de polyfills (alleen dan draait `kiosk.js` vóór de pagina-scripts), maar dan start de module **alleen via Autolaunch**: de tegel kiezen doet niets, omdat de UI wacht op een `LaunchModule`-event dat de debugger alleen bij het opstarten van TizenBrew stuurt.
+- De achtergrondservice van TizenBrew cachet `package.json` en `kiosk.js`. Na een wijziging: jsDelivr purgen én de tv echt herstarten (aan/uit ingedrukt tot het Samsung-logo); alleen de app sluiten is niet genoeg.
