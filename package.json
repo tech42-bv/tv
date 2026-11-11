@@ -6,6 +6,5 @@
   "appName": "Kantoor-TV",
   "websiteURL": "https://tech42-bv.github.io/tv/hello.html",
   "main": "kiosk.js",
-  "evaluateScriptOnDocumentStart": true,
   "keys": []
 }
