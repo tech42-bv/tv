@@ -9,7 +9,7 @@ Waarom TizenBrew en geen eigen .wgt: TizenBrew installeer je één keer; de modu
 1. Tv: **Apps** openen, `12345` intoetsen, **Developer mode** op **On**, **Host PC IP** = IP van de Mac, tv herstarten.
 2. Mac: `TizenBrewInstaller-macos-arm64` downloaden van https://github.com/reisxd/TizenBrewInstaller/releases/latest, `chmod +x` en starten. Kies **Install TizenBrew**.
 3. Tv: **Apps** > `12345` > **Host PC IP** = `127.0.0.1`, tv herstarten (aan/uit ingedrukt tot het Samsung-logo). TizenBrew debugt de tv zelf via SDB; met het IP van de Mac geeft hij "kon niet verbinden met SDB Daemon". Voor herinstallatie tijdelijk terug naar het IP van de Mac.
-4. Tv: open **TizenBrew**, voeg module toe: `gh/tech42-bv/tv-kiosk-tizenbrew`.
+4. Tv: open **TizenBrew** > module manager > type **GitHub**, typ `tech42-bv/tv-kiosk-tizenbrew` (zonder `gh/`: TizenBrew zet het type ervoor). Opslaan gebeurt bij het verlaten van het veld (Back), niet met Enter.
 5. TizenBrew **Settings > Autolaunch**: kies **Kantoor-TV**.
 6. Tv **Settings > General > Smart Features > Autorun Last App** aan; **Eco Solution > Auto Power Off** uit.
 7. Home Assistant: `home-assistant-automation.yaml` als automation toevoegen (start TizenBrew als de tv aangaat).
