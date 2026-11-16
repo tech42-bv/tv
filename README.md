@@ -9,7 +9,7 @@ Waarom TizenBrew en geen eigen .wgt: TizenBrew installeer je één keer; de modu
 1. Tv: **Apps** openen, `12345` intoetsen, **Developer mode** op **On**, **Host PC IP** = IP van de Mac, tv herstarten.
 2. Mac: `TizenBrewInstaller-macos-arm64` downloaden van https://github.com/reisxd/TizenBrewInstaller/releases/latest, `chmod +x` en starten. Kies **Install TizenBrew**.
 3. Tv: **Apps** > `12345` > **Host PC IP** = `127.0.0.1`, tv herstarten (aan/uit ingedrukt tot het Samsung-logo). TizenBrew debugt de tv zelf via SDB; met het IP van de Mac geeft hij "kon niet verbinden met SDB Daemon". Voor herinstallatie tijdelijk terug naar het IP van de Mac.
-4. Tv: open **TizenBrew** > module manager > type **GitHub**, typ `tech42-bv/tv@main` (met `@main`: zonder versie cachet jsDelivr de resolutie urenlang; zonder `gh/`: TizenBrew zet het type ervoor). Opslaan gebeurt bij het verlaten van het veld (Back), niet met Enter.
+4. Tv: open **TizenBrew** > module manager > type **GitHub**, typ `tech42-bv/tv@main` (met `@main`: volg de branch; zonder versie kiest jsDelivr de nieuwste release-tag; zonder `gh/`: TizenBrew zet het type ervoor). Opslaan gebeurt bij het verlaten van het veld (Back), niet met Enter.
 5. TizenBrew **Settings > Autolaunch**: kies **Kantoor-TV**.
 6. Tv **Settings > General > Smart Features > Autorun Last App** aan; **Eco Solution > Auto Power Off** uit.
 7. Home Assistant: `home-assistant-automation.yaml` als automation toevoegen (start TizenBrew als de tv aangaat).
@@ -17,6 +17,12 @@ Waarom TizenBrew en geen eigen .wgt: TizenBrew installeer je één keer; de modu
 ## Pagina-URL wijzigen
 
 `websiteURL` in `package.json` aanpassen en pushen. jsDelivr cachet `gh/`-bestanden tot 12 uur; direct verversen: https://purge.jsdelivr.net/gh/tech42-bv/tv@main/package.json openen, daarna TizenBrew herstarten.
+
+## Updates voor bestaande installaties zonder `@main`
+
+Een tv met module `tech42-bv/tv` volgt de nieuwste release-tag, niet de nieuwste commit op `main`. Publiceer voor zo'n installatie een nieuwe, hogere versietag op de bedoelde commit. Ververs daarna beide bestanden via https://purge.jsdelivr.net/gh/tech42-bv/tv/package.json en https://purge.jsdelivr.net/gh/tech42-bv/tv/kiosk.js. Alleen `main` pushen of de cache purgen verandert de gekozen release niet.
+
+Controleer op de CDN-URL zonder versie de responseheader `x-jsd-version` én de inhoud van `kiosk.js`; controle van alleen `@main` zegt niets over wat deze tv ophaalt. Herstart daarna de tv volledig (aan/uit ingedrukt tot het Samsung-logo). De debugbalk is verwijderd vanaf tag `v1.0.2`.
 
 ## Grenzen
 
